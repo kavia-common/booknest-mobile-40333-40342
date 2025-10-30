@@ -6,6 +6,7 @@ import BookDetails from './routes/BookDetails';
 import Cart from './routes/Cart';
 import Profile from './routes/Profile';
 import OrderHistory from './routes/OrderHistory';
+import CheckoutSuccess from './routes/CheckoutSuccess';
 import BottomNav from './components/BottomNav';
 import { StoreProvider } from './context/StoreContext';
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/orders" element={<OrderHistory />} />
+            <Route path="/checkout/success" element={<CheckoutSuccess />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <BottomNav />

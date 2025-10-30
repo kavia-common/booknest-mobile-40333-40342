@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 
 // PUBLIC_INTERFACE
 export default function Cart() {
   /** Cart page: list items, quantity controls, totals, and checkout. */
   const { cartItems, cartTotal, dispatch } = useStore();
+  const navigate = useNavigate();
   const hasItems = cartItems.length > 0;
 
   return (
@@ -58,7 +60,11 @@ export default function Cart() {
           <button
             className="btn btn-primary"
             style={{ width: '100%', marginTop: 12 }}
-            onClick={() => dispatch({ type: 'CHECKOUT' })}
+            onClick={() => {
+              // Dispatch checkout to create an order and clear cart, then navigate.
+              dispatch({ type: 'CHECKOUT' });
+              navigate('/checkout/success', { replace: true });
+            }}
             aria-label="Checkout"
           >
             Checkout
