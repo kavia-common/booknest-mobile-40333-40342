@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "title": "The Ocean Between Us",
+    "author": "Lena Hart",
+    "genre": "Drama",
+    "category": "Fiction",
+    "price": 14.99,
+    "rating": 4.6,
+    "cover": "/assets/covers/ocean-between-us.jpg",
+    "description": "A heartfelt journey across continents and time, exploring love, loss, and the tides that bind us."
+  },
+  {
+    "id": 2,
+    "title": "Mindful Mornings",
+    "author": "K. Patel",
+    "genre": "Wellness",
+    "category": "Self-Help",
+    "price": 12.5,
+    "rating": 4.3,
+    "cover": "/assets/covers/mindful-mornings.jpg",
+    "description": "Simple rituals to transform your mornings with clarity and purpose."
+  },
+  {
+    "id": 3,
+    "title": "Numbers that Talk",
+    "author": "A. Chen",
+    "genre": "Education",
+    "category": "Kids",
+    "price": 9.99,
+    "rating": 4.8,
+    "cover": "/assets/covers/numbers-that-talk.jpg",
+    "description": "A colorful adventure that brings numbers to life for young learners."
+  },
+  {
+    "id": 4,
+    "title": "Uncharted Markets",
+    "author": "S. Romero",
+    "genre": "Business",
+    "category": "Non-Fiction",
+    "price": 18.0,
+    "rating": 4.2,
+    "cover": "/assets/covers/uncharted-markets.jpg",
+    "description": "Insights and strategies for navigating emerging economies and opportunities."
+  },
+  {
+    "id": 5,
+    "title": "Whispers of the Forest",
+    "author": "I. Nunez",
+    "genre": "Fantasy",
+    "category": "Fiction",
+    "price": 16.25,
+    "rating": 4.7,
+    "cover": "/assets/covers/whispers-forest.jpg",
+    "description": "A magical tale where ancient trees hold secrets of forgotten kingdoms."
+  },
+  {
+    "id": 6,
+    "title": "Little Explorers: Space",
+    "author": "T. Nguyen",
+    "genre": "Science",
+    "category": "Kids",
+    "price": 8.75,
+    "rating": 4.5,
+    "cover": "/assets/covers/little-explorers-space.jpg",
+    "description": "Blast off into a fun, illustrated tour of our solar system for curious minds."
+  },
+  {
+    "id": 7,
+    "title": "The Focus Formula",
+    "author": "Dana Ortiz",
+    "genre": "Productivity",
+    "category": "Self-Help",
+    "price": 13.5,
+    "rating": 4.4,
+    "cover": "/assets/covers/focus-formula.jpg",
+    "description": "Practical steps to regain attention and get meaningful work done."
+  },
+  {
+    "id": 8,
+    "title": "Deep Blue: The Science of Oceans",
+    "author": "R. Ahmed",
+    "genre": "Science",
+    "category": "Non-Fiction",
+    "price": 20.0,
+    "rating": 4.1,
+    "cover": "/assets/covers/deep-blue.jpg",
+    "description": "Dive into the fascinating ecosystems and mysteries of our planet's oceans."
+  }
+]

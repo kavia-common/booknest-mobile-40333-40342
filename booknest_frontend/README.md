@@ -1,82 +1,41 @@
-# Lightweight React Template for KAVIA
+# BookNest Frontend (React)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+Mobile-first React frontend for BookNest with a modern Ocean Professional theme.
 
-## Features
+## Screens
+- Home: Search, category tabs (Fiction, Non-Fiction, Kids, Self-Help), and horizontal "Recommended for You".
+- Book Details: Cover, title, author, price, rating, description, Add to Cart, Wishlist.
+- Cart & Checkout: Quantity controls, totals, and demo checkout that generates an order.
+- Profile: Basic user info and Wishlist.
+- Order History: List of demo orders created via Checkout.
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+## Tech
+- React + React Router
+- Local state via Context + reducer
+- Local sample data and placeholder cover images (public/assets/covers)
+- Minimal CSS with theme variables (no external CSS frameworks)
 
-## Getting Started
+## Theme (Ocean Professional)
+- Primary: #2563EB
+- Secondary/Success: #F59E0B
+- Error: #EF4444
+- Background: #f9fafb
+- Surface: #ffffff
+- Text: #111827
 
-In the project directory, you can run:
+## Run locally
+1. Install dependencies (if not already):
+   npm install
+2. Start dev server:
+   npm start
+3. Open http://localhost:3000
 
-### `npm start`
+No environment variables or external APIs required.
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project structure
+- src/context/StoreContext.jsx — Global store for cart, wishlist, search, category, and orders
+- src/routes/* — Feature screens
+- src/components/* — UI components
+- src/data/books.json — Sample data
+- public/assets/covers/* — Placeholder cover images
 
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
-
-### Components
-
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
