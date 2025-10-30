@@ -9,6 +9,7 @@ import OrderHistory from './routes/OrderHistory';
 import CheckoutSuccess from './routes/CheckoutSuccess';
 import BottomNav from './components/BottomNav';
 import { StoreProvider } from './context/StoreContext';
+import { ToastProvider } from './components/Toast';
 
 // PUBLIC_INTERFACE
 function App() {
@@ -20,20 +21,22 @@ function App() {
 
   return (
     <StoreProvider>
-      <BrowserRouter>
-        <div className="app-shell page">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/books/:id" element={<BookDetails />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/orders" element={<OrderHistory />} />
-            <Route path="/checkout/success" element={<CheckoutSuccess />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-          <BottomNav />
-        </div>
-      </BrowserRouter>
+      <ToastProvider>
+        <BrowserRouter>
+          <div className="app-shell page">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/books/:id" element={<BookDetails />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/orders" element={<OrderHistory />} />
+              <Route path="/checkout/success" element={<CheckoutSuccess />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+            <BottomNav />
+          </div>
+        </BrowserRouter>
+      </ToastProvider>
     </StoreProvider>
   );
 }

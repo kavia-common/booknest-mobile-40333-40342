@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
+import { useToast } from '../components/Toast';
 
 // PUBLIC_INTERFACE
 export default function BookDetails() {
@@ -8,6 +9,7 @@ export default function BookDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { state, dispatch } = useStore();
+  const { showToast } = useToast();
 
   const book = useMemo(
     () => state.books.find(b => String(b.id) === String(id)),
@@ -76,7 +78,10 @@ export default function BookDetails() {
           <div style={{ display: 'flex', gap: 10 }}>
             <button
               className="btn"
-              onClick={() => dispatch({ type: 'TOGGLE_WISHLIST', payload: book.id })}
+              onClick={() => {
+                dispatch({ type: 'TOGGLE_WISHLIST', payload: book.id });
+                showToast(inWishlist ? 'Removed from Wishlist' : 'Added to Wishlist');
+              }}
               aria-label="Toggle wishlist"
               style={{ background: '#fff', border: '1px solid rgba(17,24,39,.08)' }}
             >
@@ -84,7 +89,10 @@ export default function BookDetails() {
             </button>
             <button
               className="btn btn-primary"
-              onClick={() => dispatch({ type: 'ADD_TO_CART', payload: book.id })}
+              onClick={() => {
+                dispatch({ type: 'ADD_TO_CART', payload: book.id });
+                showToast('Added to Cart');
+              }}
               aria-label="Add to cart"
             >
               Add to cart

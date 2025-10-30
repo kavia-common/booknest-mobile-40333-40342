@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
+import { useToast } from './Toast';
 
 // PUBLIC_INTERFACE
 export default function BookCard({ book }) {
   /** Book card with cover, title, author, price and quick actions. */
   const { dispatch, state } = useStore();
+  const { showToast } = useToast();
   const inWishlist = !!state.wishlist[String(book.id)];
 
   return (
@@ -29,6 +31,7 @@ export default function BookCard({ book }) {
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch({ type: 'TOGGLE_WISHLIST', payload: book.id });
+                  showToast(inWishlist ? 'Removed from Wishlist' : 'Added to Wishlist');
                 }}
                 title="Toggle Wishlist"
               >
@@ -40,6 +43,7 @@ export default function BookCard({ book }) {
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch({ type: 'ADD_TO_CART', payload: book.id });
+                  showToast('Added to Cart');
                 }}
               >
                 Add

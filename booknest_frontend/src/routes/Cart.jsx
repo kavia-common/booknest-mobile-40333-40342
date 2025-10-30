@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
+import { useToast } from '../components/Toast';
 
 // PUBLIC_INTERFACE
 export default function Cart() {
   /** Cart page: list items, quantity controls, totals, and checkout. */
   const { cartItems, cartTotal, dispatch } = useStore();
   const navigate = useNavigate();
+  const { showToast } = useToast();
   const hasItems = cartItems.length > 0;
 
   return (
@@ -64,6 +66,7 @@ export default function Cart() {
               // Dispatch checkout to create an order and clear cart, then navigate to success.
               // Using replace prevents the user from returning to a stale cart via back navigation.
               dispatch({ type: 'CHECKOUT' });
+              showToast('Checkout complete');
               navigate('/checkout/success', { replace: true });
             }}
             aria-label="Checkout"
