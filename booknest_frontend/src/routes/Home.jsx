@@ -12,6 +12,8 @@ export default function Home() {
 
   const recRows = useMemo(() => recommended.slice(0, 12), [recommended]);
 
+  const showEmpty = filtered.length === 0;
+
   return (
     <main id="main-content" className="container" role="main" aria-labelledby="home-heading">
       <div style={{ padding: '8px 2px 14px' }}>
@@ -78,11 +80,77 @@ export default function Home() {
 
       <section style={{ marginTop: 14 }} aria-labelledby="browse-heading">
         <h2 id="browse-heading" style={{ margin: '0 4px 10px', fontSize: 18 }}>Browse</h2>
-        <div style={{ display: 'grid', gap: 12 }} role="list" aria-label="Browse books">
-          {filtered.map((b) => (
-            <BookCard key={b.id} book={b} />
-          ))}
-        </div>
+
+        {!showEmpty && (
+          <div style={{ display: 'grid', gap: 12 }} role="list" aria-label="Browse books">
+            {filtered.map((b) => (
+              <BookCard key={b.id} book={b} />
+            ))}
+          </div>
+        )}
+
+        {showEmpty && (
+          <section
+            className="card"
+            role="region"
+            aria-live="polite"
+            aria-label="No results"
+            style={{
+              padding: 18,
+              background: 'linear-gradient(180deg, rgba(37,99,235,.06) 0%, #fff 14%)',
+              display: 'grid',
+              gap: 10,
+              textAlign: 'center'
+            }}
+          >
+            <div
+              aria-hidden="true"
+              style={{
+                width: 68,
+                height: 68,
+                borderRadius: 16,
+                margin: '4px auto 6px',
+                background: 'linear-gradient(135deg, #2563EB, #60a5fa)',
+                color: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 14px 40px rgba(37,99,235,.28)',
+                fontSize: 28,
+                fontWeight: 800,
+              }}
+            >
+              🔎
+            </div>
+            <h3 style={{ margin: '4px 0 2px' }}>No results</h3>
+            <p style={{ margin: 0, color: 'var(--muted)' }}>
+              We couldn’t find books matching your search and category.
+            </p>
+            <div style={{ display: 'grid', gap: 8, marginTop: 6 }}>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  // Reset both search and category
+                  dispatch({ type: 'SET_SEARCH', payload: '' });
+                  dispatch({ type: 'SET_CATEGORY', payload: 'All' });
+                }}
+                aria-label="Reset search and category filters"
+                style={{ fontWeight: 800 }}
+              >
+                Reset filters
+              </button>
+              {(state.search || state.category !== 'All') && (
+                <div
+                  role="alert"
+                  aria-live="polite"
+                  style={{ fontSize: 12, color: 'var(--muted)' }}
+                >
+                  Active filters — Search: “{state.search || 'None'}”, Category: {state.category}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
       </section>
 
       <div className="bottom-safe" />
