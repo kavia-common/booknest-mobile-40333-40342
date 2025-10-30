@@ -99,6 +99,8 @@ export default function CheckoutSuccess() {
                   <img
                     src={it.cover}
                     alt={`${it.title} book cover`}
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       width: '100%',
                       height: '100%',

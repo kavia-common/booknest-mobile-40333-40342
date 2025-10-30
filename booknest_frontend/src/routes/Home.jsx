@@ -66,7 +66,7 @@ export default function Home() {
           {recRows.map((b) => (
             <li key={b.id} className="card" style={{ minWidth: 160, padding: 10 }} role="listitem" aria-label={`${b.title} by ${b.author}`}>
               <div style={{ width: '100%', height: 160, borderRadius: 12, overflow: 'hidden', background: '#eef2ff' }}>
-                <img src={b.cover} alt={`${b.title} book cover by ${b.author}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={b.cover} alt={`${b.title} book cover by ${b.author}`} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div style={{ marginTop: 8 }}>
                 <div style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.1 }}>{b.title}</div>

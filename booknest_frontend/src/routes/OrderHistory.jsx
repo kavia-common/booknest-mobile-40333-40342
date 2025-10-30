@@ -30,7 +30,7 @@ export default function OrderHistory() {
               {o.items.map((it, idx) => (
                 <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: 10 }} role="listitem" aria-label={`${it.title}, quantity ${it.qty}`}>
                   <div style={{ width: 44, height: 60, borderRadius: 8, overflow: 'hidden', background: '#eef2ff' }}>
-                    <img src={it.cover} alt={`${it.title} book cover`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={it.cover} alt={`${it.title} book cover`} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontWeight: 700, fontSize: 14 }}>{it.title}</div>

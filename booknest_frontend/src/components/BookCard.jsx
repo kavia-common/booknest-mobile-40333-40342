@@ -4,7 +4,7 @@ import { useStore } from '../context/StoreContext';
 import { useToast } from './Toast';
 
 // PUBLIC_INTERFACE
-export default function BookCard({ book }) {
+function BookCard({ book }) {
   /** Book card with cover, title, author, price and quick actions. */
   const { dispatch, state } = useStore();
   const { showToast } = useToast();
@@ -26,6 +26,8 @@ export default function BookCard({ book }) {
           <img
             src={book.cover}
             alt={`${book.title} book cover by ${book.author}`}
+            loading="lazy"
+            decoding="async"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
@@ -69,3 +71,5 @@ export default function BookCard({ book }) {
     </article>
   );
 }
+
+export default React.memo(BookCard);

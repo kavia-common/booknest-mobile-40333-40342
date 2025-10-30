@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect, lazy } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './routes/Home';
-import BookDetails from './routes/BookDetails';
 import Cart from './routes/Cart';
-import Profile from './routes/Profile';
-import OrderHistory from './routes/OrderHistory';
-import CheckoutSuccess from './routes/CheckoutSuccess';
-import NotFound from './routes/NotFound';
 import BottomNav from './components/BottomNav';
 import { StoreProvider } from './context/StoreContext';
 import { ToastProvider } from './components/Toast';
+
+// Lazily load non-initial routes to reduce initial bundle size
+const BookDetails = lazy(() => import('./routes/BookDetails'));
+const Profile = lazy(() => import('./routes/Profile'));
+const OrderHistory = lazy(() => import('./routes/OrderHistory'));
+const CheckoutSuccess = lazy(() => import('./routes/CheckoutSuccess'));
+const NotFound = lazy(() => import('./routes/NotFound'));
 
 // PUBLIC_INTERFACE
 function App() {
@@ -41,6 +43,15 @@ function App() {
     boxShadow: '0 14px 40px rgba(37,99,235,.22)',
   };
 
+  // Accessible minimal fallback while routes load
+  const RouteFallback = (
+    <div role="status" aria-live="polite" className="container" style={{ paddingTop: 16 }}>
+      <div className="card" style={{ padding: 12 }}>
+        Loading…
+      </div>
+    </div>
+  );
+
   return (
     <StoreProvider>
       <ToastProvider>
@@ -59,15 +70,17 @@ function App() {
             Skip to content
           </a>
           <div className="app-shell page">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/books/:id" element={<BookDetails />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/orders" element={<OrderHistory />} />
-              <Route path="/checkout/success" element={<CheckoutSuccess />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <Suspense fallback={RouteFallback}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/books/:id" element={<BookDetails />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/orders" element={<OrderHistory />} />
+                <Route path="/checkout/success" element={<CheckoutSuccess />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
             <BottomNav />
           </div>
         </BrowserRouter>
