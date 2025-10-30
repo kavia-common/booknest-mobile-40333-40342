@@ -26,9 +26,9 @@ export default function OrderHistory() {
               {new Date(o.date).toLocaleString()}
             </div>
             <div className="hr" />
-            <div style={{ display: 'grid', gap: 8 }} role="list" aria-label={`Items in order ${o.id}`}>
+            <ul style={{ display: 'grid', gap: 8, listStyle: 'none', padding: 0, margin: 0 }} role="list" aria-label={`Items in order ${o.id}`}>
               {o.items.map((it, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: 10 }} role="listitem" aria-label={`${it.title}, quantity ${it.qty}`}>
+                <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: 10 }} role="listitem" aria-label={`${it.title}, quantity ${it.qty}`}>
                   <div style={{ width: 44, height: 60, borderRadius: 8, overflow: 'hidden', background: '#eef2ff' }}>
                     <img src={it.cover} alt={`${it.title} book cover`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
@@ -37,9 +37,9 @@ export default function OrderHistory() {
                     <div style={{ color: 'var(--muted)', fontSize: 12 }}>Qty: {it.qty}</div>
                   </div>
                   <div className="price" aria-label={`Item total ${(it.price * it.qty).toFixed(2)} dollars`}>${(it.price * it.qty).toFixed(2)}</div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         ))}
       </div>

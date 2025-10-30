@@ -9,6 +9,11 @@
   --muted: #6b7280;
   --card-shadow: 0 6px 20px rgba(17, 24, 39, 0.06);
   --radius: 14px;
+
+  /* Focus tokens for Ocean Professional theme */
+  --focus-ring: 3px solid rgba(37, 99, 235, 0.65);
+  --focus-offset: 3px;
+  --focus-shadow: 0 0 0 6px rgba(37, 99, 235, 0.10);
 }
 
 * {
@@ -37,25 +42,33 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.6);
-  outline-offset: 2px;
-  border-radius: 8px;
-  transition: outline-color .15s ease;
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: 10px;
+  transition: outline-color .15s ease, box-shadow .15s ease;
 }
 
 /* Buttons and links inherit improved focus ring */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-[role="button"]:focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.6);
-  outline-offset: 2px;
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="listitem"]:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
 /* Cards, inputs, and nav items use subtle focus shadow to complement outline */
 .card:focus-within {
-  box-shadow: 0 0 0 4px rgba(37,99,235,.10), var(--card-shadow);
+  box-shadow: var(--focus-shadow), var(--card-shadow);
   border-color: rgba(37,99,235,.25);
+}
+
+/* Improve focus for custom interactive containers that may be focusable */
+[tabindex]:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
 img {
@@ -114,9 +127,10 @@ img {
   transition: border .2s ease, box-shadow .2s ease;
 }
 
-.input:focus {
+.input:focus,
+.input:focus-visible {
   border-color: rgba(37,99,235,.45);
-  box-shadow: 0 0 0 4px rgba(37,99,235,.1);
+  box-shadow: 0 0 0 4px rgba(37,99,235,.10);
 }
 
 .badge {

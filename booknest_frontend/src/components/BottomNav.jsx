@@ -64,7 +64,7 @@ export default function BottomNav() {
         {({ isActive }) => (
           <>
             <Icon name="home" active={isActive} />
-            <span style={{ fontSize: 12 }}>Home</span>
+            <span style={{ fontSize: 12 }} aria-hidden="true">Home</span>
           </>
         )}
       </NavLink>
@@ -72,7 +72,7 @@ export default function BottomNav() {
         {({ isActive }) => (
           <>
             <Icon name="cart" active={isActive} />
-            <span style={{ fontSize: 12 }}>Cart</span>
+            <span style={{ fontSize: 12 }} aria-hidden="true">Cart</span>
             {badge}
           </>
         )}
@@ -81,7 +81,7 @@ export default function BottomNav() {
         {({ isActive }) => (
           <>
             <Icon name="orders" active={isActive} />
-            <span style={{ fontSize: 12 }}>Orders</span>
+            <span style={{ fontSize: 12 }} aria-hidden="true">Orders</span>
           </>
         )}
       </NavLink>
@@ -89,7 +89,7 @@ export default function BottomNav() {
         {({ isActive }) => (
           <>
             <Icon name="profile" active={isActive} />
-            <span style={{ fontSize: 12 }}>Profile</span>
+            <span style={{ fontSize: 12 }} aria-hidden="true">Profile</span>
           </>
         )}
       </NavLink>

@@ -53,7 +53,7 @@ export default function BookDetails() {
           boxShadow: '0 22px 40px rgba(17,24,39,.22)',
           background: '#eef2ff'
         }}>
-          <img src={book.cover} alt={`${book.title} book cover`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src={book.cover} alt={`${book.title} book cover by ${book.author}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
       </div>
 
