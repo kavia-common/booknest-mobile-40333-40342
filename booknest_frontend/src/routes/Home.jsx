@@ -13,9 +13,9 @@ export default function Home() {
   const recRows = useMemo(() => recommended.slice(0, 12), [recommended]);
 
   return (
-    <div className="container">
+    <main id="main-content" className="container" role="main" aria-labelledby="home-heading">
       <div style={{ padding: '8px 2px 14px' }}>
-        <h1 style={{ margin: 0, fontSize: 22, fontWeight: 800 }}>
+        <h1 id="home-heading" style={{ margin: 0, fontSize: 22, fontWeight: 800 }}>
           <span style={{ color: 'var(--primary)' }}>Book</span>Nest
         </h1>
         <p style={{ margin: '6px 0 0', color: 'var(--muted)' }}>Find your next great read</p>
@@ -79,6 +79,6 @@ export default function Home() {
       </section>
 
       <div className="bottom-safe" />
-    </div>
+    </main>
   );
 }

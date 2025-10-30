@@ -8,8 +8,8 @@ export default function OrderHistory() {
   const orders = state.orders;
 
   return (
-    <div className="container">
-      <h1 style={{ margin: '8px 0 12px', fontSize: 22 }}>Orders</h1>
+    <main id="main-content" className="container" role="main" aria-labelledby="orders-heading">
+      <h1 id="orders-heading" style={{ margin: '8px 0 12px', fontSize: 22 }}>Orders</h1>
       {orders.length === 0 && (
         <div className="card" style={{ padding: 16, color: 'var(--muted)' }}>
           No orders yet. Add items to cart and Checkout to create an order.
@@ -45,6 +45,6 @@ export default function OrderHistory() {
       </div>
 
       <div className="bottom-safe" />
-    </div>
+    </main>
   );
 }

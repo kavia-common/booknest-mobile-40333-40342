@@ -17,7 +17,7 @@ export default function CheckoutSuccess() {
   }
 
   return (
-    <main className="container" style={{ paddingTop: 16 }} role="main" aria-labelledby="checkout-success-heading">
+    <main id="main-content" className="container" style={{ paddingTop: 16 }} role="main" aria-labelledby="checkout-success-heading">
       <section
         className="card"
         style={{

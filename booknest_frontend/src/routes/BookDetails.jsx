@@ -27,7 +27,7 @@ export default function BookDetails() {
   const inWishlist = !!state.wishlist[String(book.id)];
 
   return (
-    <div>
+    <main id="main-content" role="main" aria-labelledby="book-details-heading">
       <div style={{
         position: 'relative',
         height: 260,
@@ -59,7 +59,7 @@ export default function BookDetails() {
 
       <div className="container" style={{ marginTop: 70 }}>
         <div className="badge" style={{ marginBottom: 8 }}>{book.category}</div>
-        <h1 style={{ margin: '4px 0 6px', fontSize: 22 }}>{book.title}</h1>
+        <h1 id="book-details-heading" style={{ margin: '4px 0 6px', fontSize: 22 }}>{book.title}</h1>
         <p style={{ margin: 0, color: 'var(--muted)' }}>by {book.author}</p>
         <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
           <span>⭐ {book.rating.toFixed(1)}</span>
@@ -102,6 +102,6 @@ export default function BookDetails() {
       </div>
 
       <div className="bottom-safe" />
-    </div>
+    </main>
   );
 }

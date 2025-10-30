@@ -12,8 +12,8 @@ export default function Cart() {
   const hasItems = cartItems.length > 0;
 
   return (
-    <div className="container">
-      <h1 style={{ margin: '8px 0 12px', fontSize: 22 }}>Your Cart</h1>
+    <main id="main-content" className="container" role="main" aria-labelledby="cart-heading">
+      <h1 id="cart-heading" style={{ margin: '8px 0 12px', fontSize: 22 }}>Your Cart</h1>
 
       {!hasItems && (
         <div className="card" style={{ padding: 18 }}>
@@ -80,6 +80,6 @@ export default function Cart() {
       )}
 
       <div className="bottom-safe" />
-    </div>
+    </main>
   );
 }

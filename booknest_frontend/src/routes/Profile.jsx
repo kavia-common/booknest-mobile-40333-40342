@@ -8,7 +8,7 @@ export default function Profile() {
   const { wishlistItems } = useStore();
 
   return (
-    <div className="container">
+    <main id="main-content" className="container" role="main" aria-labelledby="profile-heading">
       <div className="card" style={{ padding: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
         <div style={{
           width: 56, height: 56, borderRadius: 14, background: 'linear-gradient(135deg, #2563EB, #60a5fa)',
@@ -22,7 +22,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <h2 style={{ margin: '16px 4px 10px', fontSize: 18 }}>Wishlist</h2>
+      <h2 id="profile-heading" style={{ margin: '16px 4px 10px', fontSize: 18 }}>Wishlist</h2>
       {wishlistItems.length === 0 ? (
         <div className="card" style={{ padding: 16, color: 'var(--muted)' }}>
           No items in wishlist. Tap the heart on a book to add it.
@@ -36,6 +36,6 @@ export default function Profile() {
       )}
 
       <div className="bottom-safe" />
-    </div>
+    </main>
   );
 }
