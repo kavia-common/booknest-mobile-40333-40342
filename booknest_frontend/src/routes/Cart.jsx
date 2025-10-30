@@ -61,7 +61,8 @@ export default function Cart() {
             className="btn btn-primary"
             style={{ width: '100%', marginTop: 12 }}
             onClick={() => {
-              // Dispatch checkout to create an order and clear cart, then navigate.
+              // Dispatch checkout to create an order and clear cart, then navigate to success.
+              // Using replace prevents the user from returning to a stale cart via back navigation.
               dispatch({ type: 'CHECKOUT' });
               navigate('/checkout/success', { replace: true });
             }}

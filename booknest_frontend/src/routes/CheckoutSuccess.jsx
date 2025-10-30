@@ -17,8 +17,8 @@ export default function CheckoutSuccess() {
   }
 
   return (
-    <div className="container" style={{ paddingTop: 16 }}>
-      <div
+    <main className="container" style={{ paddingTop: 16 }} role="main" aria-labelledby="checkout-success-heading">
+      <section
         className="card"
         style={{
           padding: 18,
@@ -46,7 +46,7 @@ export default function CheckoutSuccess() {
         >
           ✓
         </div>
-        <h1 style={{ margin: '6px 0 4px', fontSize: 22, lineHeight: 1.2 }}>
+        <h1 id="checkout-success-heading" style={{ margin: '6px 0 4px', fontSize: 22, lineHeight: 1.2 }}>
           Order Confirmed
         </h1>
         <p style={{ margin: 0, color: 'var(--muted)' }}>
@@ -55,29 +55,30 @@ export default function CheckoutSuccess() {
 
         <div className="hr" />
 
-        <div
+        <article
           className="card"
           style={{ padding: 12, textAlign: 'left', background: '#fff' }}
+          aria-label="Order summary"
         >
-          <div
+          <header
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'baseline',
             }}
           >
-            <div style={{ fontWeight: 800 }}>#{latestOrder.id}</div>
-            <div className="badge">Total ${latestOrder.total.toFixed(2)}</div>
-          </div>
+            <div style={{ fontWeight: 800 }} aria-label="Order ID">#{latestOrder.id}</div>
+            <div className="badge" aria-label={`Total ${latestOrder.total.toFixed(2)} dollars`}>Total ${latestOrder.total.toFixed(2)}</div>
+          </header>
           <div style={{ color: 'var(--muted)', fontSize: 12, marginTop: 4 }}>
             {new Date(latestOrder.date).toLocaleString()}
           </div>
 
           <div className="hr" />
 
-          <div style={{ display: 'grid', gap: 10 }}>
+          <ul style={{ display: 'grid', gap: 10, listStyle: 'none', padding: 0, margin: 0 }}>
             {latestOrder.items.map((it, idx) => (
-              <div
+              <li
                 key={idx}
                 style={{
                   display: 'flex',
@@ -92,6 +93,7 @@ export default function CheckoutSuccess() {
                     borderRadius: 8,
                     overflow: 'hidden',
                     background: '#eef2ff',
+                    flex: '0 0 auto'
                   }}
                 >
                   <img
@@ -104,21 +106,21 @@ export default function CheckoutSuccess() {
                     }}
                   />
                 </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 700, fontSize: 14 }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {it.title}
                   </div>
                   <div style={{ color: 'var(--muted)', fontSize: 12 }}>
                     Qty: {it.qty}
                   </div>
                 </div>
-                <div className="price">
+                <div className="price" aria-label={`Item total ${(it.price * it.qty).toFixed(2)} dollars`}>
                   ${(it.price * it.qty).toFixed(2)}
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </article>
 
         <div style={{ display: 'grid', gap: 10, marginTop: 14 }}>
           <Link
@@ -142,9 +144,9 @@ export default function CheckoutSuccess() {
             Continue Shopping
           </Link>
         </div>
-      </div>
+      </section>
 
       <div className="bottom-safe" />
-    </div>
+    </main>
   );
 }
