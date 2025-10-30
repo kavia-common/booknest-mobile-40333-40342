@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './routes/Home';
@@ -17,10 +17,6 @@ const NotFound = lazy(() => import('./routes/NotFound'));
 // PUBLIC_INTERFACE
 function App() {
   /** Main app shell with routing, global providers, and accessibility features. */
-  useEffect(() => {
-    // Apply theme colors to body from Ocean Professional theme
-    document.body.style.background = '';
-  }, []);
 
   const skipStyles = {
     position: 'absolute',

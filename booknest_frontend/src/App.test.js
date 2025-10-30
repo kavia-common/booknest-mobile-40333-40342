@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders BookNest header on Home', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  // The Home header contains "BookNest" with styled span
+  const heading = await screen.findByRole('heading', { name: /booknest/i });
+  expect(heading).toBeInTheDocument();
 });
