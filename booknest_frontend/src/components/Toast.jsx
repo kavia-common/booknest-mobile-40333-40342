@@ -78,7 +78,8 @@ function ToastContainer({ toasts, onClose }) {
         position: 'fixed',
         left: 0,
         right: 0,
-        bottom: 96, // slightly above bottom nav
+        /* Keep toasts above BottomNav and account for device safe area */
+        bottom: 'calc(var(--bottom-nav-height) + max(24px, env(safe-area-inset-bottom, 0px)))',
         display: 'grid',
         gap: 8,
         placeItems: 'center',

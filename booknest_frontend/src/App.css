@@ -29,6 +29,11 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Ensure the app shell respects bottom safe area and BottomNav height */
+.app-shell {
+  padding-bottom: var(--content-bottom-gap);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

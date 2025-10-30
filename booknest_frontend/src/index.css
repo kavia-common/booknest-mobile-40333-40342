@@ -14,6 +14,16 @@
   --focus-ring: 3px solid rgba(37, 99, 235, 0.65);
   --focus-offset: 3px;
   --focus-shadow: 0 0 0 6px rgba(37, 99, 235, 0.10);
+
+  /* Safe area vars (fallbacks included) */
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Bottom nav and content spacing tokens */
+  --bottom-nav-height: 64px;
+  --content-bottom-gap: calc(var(--bottom-nav-height) + max(12px, var(--safe-bottom)));
 }
 
 * {
@@ -81,7 +91,13 @@ img {
 }
 
 .page {
-  padding-bottom: 76px; /* space for bottom nav */
+  /* Provide space for BottomNav and safe area on all pages */
+  padding-bottom: var(--content-bottom-gap);
+}
+
+/* In case any page needs extra spacing, expose a helper class */
+.page-with-extra-bottom {
+  padding-bottom: calc(var(--content-bottom-gap) + 16px);
 }
 
 .card {
@@ -157,7 +173,8 @@ img {
 }
 
 .bottom-safe {
-  height: 68px;
+  /* Reserve space equivalent to nav height plus safe area so inline pages using this helper remain safe */
+  height: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px));
 }
 
 .hidden {

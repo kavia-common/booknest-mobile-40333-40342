@@ -4,18 +4,23 @@ import { useStore } from '../context/StoreContext';
 
 const navStyle = {
   position: 'fixed',
-  bottom: 12,
-  left: 12,
-  right: 12,
+  /* Space above the device bottom safely, including iOS home indicator */
+  bottom: 'max(12px, env(safe-area-inset-bottom, 0px))',
+  left: 'max(12px, env(safe-area-inset-left, 0px))',
+  right: 'max(12px, env(safe-area-inset-right, 0px))',
   background: 'var(--surface)',
   borderRadius: 18,
   boxShadow: '0 14px 40px rgba(17,24,39,.16)',
-  padding: '10px 12px',
+  /* Internal padding also respects safe area to avoid clipped content */
+  padding: 'calc(10px) calc(12px)',
   display: 'flex',
   justifyContent: 'space-around',
   alignItems: 'center',
   border: '1px solid rgba(17,24,39,.06)',
-  zIndex: 50
+  zIndex: 50,
+  /* Minimum tap target area accounting for safe bottom */
+  minHeight: 'var(--bottom-nav-height)',
+  paddingBottom: 'calc(10px + env(safe-area-inset-bottom, 0px))',
 };
 
 const linkStyle = (isActive) => ({
