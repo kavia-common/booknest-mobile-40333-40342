@@ -28,7 +28,7 @@ export default function Profile() {
           No items in wishlist. Tap the heart on a book to add it.
         </div>
       ) : (
-        <div style={{ display: 'grid', gap: 12 }}>
+        <div style={{ display: 'grid', gap: 12 }} role="list" aria-label="Wishlist items">
           {wishlistItems.map((b) => (
             <BookCard key={b.id} book={b} />
           ))}

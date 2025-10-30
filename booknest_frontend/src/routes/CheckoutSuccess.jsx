@@ -98,7 +98,7 @@ export default function CheckoutSuccess() {
                 >
                   <img
                     src={it.cover}
-                    alt={it.title}
+                    alt={`${it.title} book cover`}
                     style={{
                       width: '100%',
                       height: '100%',

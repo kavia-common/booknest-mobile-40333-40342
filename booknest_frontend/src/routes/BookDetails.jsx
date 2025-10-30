@@ -53,7 +53,7 @@ export default function BookDetails() {
           boxShadow: '0 22px 40px rgba(17,24,39,.22)',
           background: '#eef2ff'
         }}>
-          <img src={book.cover} alt={book.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src={book.cover} alt={`${book.title} book cover`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
       </div>
 
@@ -82,10 +82,11 @@ export default function BookDetails() {
                 dispatch({ type: 'TOGGLE_WISHLIST', payload: book.id });
                 showToast(inWishlist ? 'Removed from Wishlist' : 'Added to Wishlist');
               }}
-              aria-label="Toggle wishlist"
+              aria-label={inWishlist ? `Remove ${book.title} from wishlist` : `Add ${book.title} to wishlist`}
+              aria-pressed={inWishlist}
               style={{ background: '#fff', border: '1px solid rgba(17,24,39,.08)' }}
             >
-              {inWishlist ? '💙 Wishlist' : '🤍 Wishlist'}
+              <span aria-hidden="true">{inWishlist ? '💙' : '🤍'}</span> Wishlist
             </button>
             <button
               className="btn btn-primary"

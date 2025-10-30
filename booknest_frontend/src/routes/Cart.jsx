@@ -21,11 +21,11 @@ export default function Cart() {
         </div>
       )}
 
-      <div style={{ display: 'grid', gap: 12 }}>
+      <div style={{ display: 'grid', gap: 12 }} role="list" aria-label="Cart items">
         {cartItems.map((b) => (
-          <div key={b.id} className="card" style={{ padding: 12, display: 'flex', gap: 12 }}>
+          <div key={b.id} className="card" style={{ padding: 12, display: 'flex', gap: 12 }} role="listitem" aria-label={`${b.title} by ${b.author}, quantity ${b.qty}`}>
             <div style={{ width: 68, height: 92, borderRadius: 10, overflow: 'hidden', background: '#eef2ff' }}>
-              <img src={b.cover} alt={b.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={b.cover} alt={`${b.title} book cover`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 700 }}>{b.title}</div>

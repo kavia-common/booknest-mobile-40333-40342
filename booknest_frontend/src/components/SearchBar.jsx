@@ -5,7 +5,7 @@ export default function SearchBar({ value, onChange, placeholder = 'Search books
   /** Search input with subtle shadow and large touch target. */
   return (
     <div className="card" style={{ padding: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
-      <span role="img" aria-label="search" style={{ fontSize: 18, color: 'var(--muted)' }}>🔎</span>
+      <span aria-hidden="true" style={{ fontSize: 18, color: 'var(--muted)' }}>🔎</span>
       <input
         className="input"
         value={value}

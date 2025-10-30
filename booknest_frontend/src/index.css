@@ -31,6 +31,33 @@ a {
   text-decoration: none;
 }
 
+/* Focus visibility - Ocean Professional theme */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.6);
+  outline-offset: 2px;
+  border-radius: 8px;
+  transition: outline-color .15s ease;
+}
+
+/* Buttons and links inherit improved focus ring */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.6);
+  outline-offset: 2px;
+}
+
+/* Cards, inputs, and nav items use subtle focus shadow to complement outline */
+.card:focus-within {
+  box-shadow: 0 0 0 4px rgba(37,99,235,.10), var(--card-shadow);
+  border-color: rgba(37,99,235,.25);
+}
+
 img {
   display: block;
   max-width: 100%;
